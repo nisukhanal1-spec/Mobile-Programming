@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fashion Hub Nepal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f5;
+    color: #111;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 76px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    font-weight: 400;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #111;
+    font-size: 14px;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.icon-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.cart-count {
+    background: #111;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    padding: 3px 6px;
+    position: relative;
+    top: -10px;
+    left: -8px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #e8e3dc;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8%;
+}
+
+.hero-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 82px);
+    line-height: .9;
+    letter-spacing: -5px;
+    max-width: 600px;
+}
+
+.hero p {
+    margin-top: 25px;
+    max-width: 450px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.hero-btn {
+    width: fit-content;
+    margin-top: 30px;
+    background: #111;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hero-image {
+    background:
+    linear-gradient(
+        rgba(0,0,0,.05),
+        rgba(0,0,0,.05)
+    ),
+    url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories {
+    padding: 60px 5%;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.category {
+    height: 100px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.category:hover {
+    background: #111;
+    color: white;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    padding: 0 5% 50px;
+}
+
+.search-box {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products-section {
+    padding: 0 5% 80px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter {
+    border: 1px solid #ccc;
+    background: white;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-image {
+    height: 390px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.product-card:hover img {
+    transform: scale(1.04);
+}
+
+.wishlist {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.vendor {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+}
+
+.product-name {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.product-price {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.rating {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+/* =========================
+   VENDORS
+========================= */
+
+.vendors-section {
+    padding: 80px 5%;
+    background: #111;
+    color: white;
+}
+
+.vendor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.vendor-card {
+    border: 1px solid #333;
+    padding: 25px;
+}
+
+.vendor-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vendor-card h3 {
+    margin-top: 15px;
+}
+
+.vendor-card p {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.follow {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: white;
+    color: #111;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-image {
+    height: 600px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-details {
+    padding: 45px;
+}
+
+.close {
+    float: right;
+    border: none;
+    background: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modal-details h2 {
+    margin-top: 40px;
+    font-size: 35px;
+}
+
+.modal-price {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sizes {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.size {
+    border: 1px solid #ccc;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+.add-cart {
+    width: 100%;
+    margin-top: 30px;
+    padding: 17px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart {
+    position: fixed;
+    right: -420px;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background: white;
+    z-index: 600;
+    padding: 30px;
+    transition: .3s;
+    box-shadow: -5px 0 30px rgba(0,0,0,.1);
+}
+
+.cart.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-item img {
+    width: 70px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.cart-total {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+}
+
+.checkout {
+    width: 100%;
+    background: #111;
+    color: white;
+    border: none;
+    padding: 16px;
+    margin-top: 15px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 50px 5%;
+    background: #f0f0ee;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer p {
+    font-size: 13px;
+    color: #666;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        height: 400px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vendor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-image {
+        height: 350px;
+    }
+}
+
+@media(max-width: 550px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vendor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cart {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        FASHION<span>HUB</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#brands">Brands</a>
+        <a href="#">New Arrivals</a>
+        <a href="#">Thrift</a>
+    </div>
+
+    <div class="nav-actions">
+
+        <button class="icon-btn">♡</button>
+
+        <button class="icon-btn" onclick="openCart()">
+            🛒
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            Nepal's Independent Fashion Marketplace
+        </div>
+
+        <h1>
+            WEAR<br>
+            WHAT'S<br>
+            NEXT.
+        </h1>
+
+        <p>
+            Discover fashion from Nepal's independent brands,
+            boutiques, thrift stores and streetwear sellers —
+            all in one place.
+        </p>
+
+        <button class="hero-btn"
+                onclick="document.getElementById('shop').scrollIntoView()">
+            SHOP THE COLLECTION
+        </button>
+
+    </div>
+
+    <div class="hero-image"></div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="section-title">
+        <h2>Shop by Category</h2>
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category">Women</div>
+        <div class="category">Men</div>
+        <div class="category">Streetwear</div>
+        <div class="category">Thrift</div>
+        <div class="category">Accessories</div>
+        <div class="category">Sneakers</div>
+
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        🔍
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search clothes, brands, styles..."
+            onkeyup="searchProducts()"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products-section" id="shop">
+
+    <div class="section-title">
+
+        <h2>Trending Now</h2>
+
+        <span>24 products</span>
+
+    </div>
+
+    <div class="filters">
+
+        <button class="filter">All</button>
+        <button class="filter">Under Rs. 2,000</button>
+        <button class="filter">Streetwear</button>
+        <button class="filter">Thrift</button>
+        <button class="filter">New Arrivals</button>
+
+    </div>
+
+
+    <div class="product-grid" id="productGrid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card"
+             data-name="Oversized Graphic Tee"
+             onclick="openProduct(
+                'Oversized Graphic Tee',
+                'Rs. 1,899',
+                'Urban Kathmandu',
+                'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80'
+             )">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="event.stopPropagation()">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="vendor">
+                    Urban Kathmandu
+                </div>
+
+                <div class="product-name">
+                    Oversized Graphic Tee
+                </div>
+
+                <div class="product-price">
+                    Rs. 1,899
+                </div>
+
+                <div class="rating">
+                    ★ 4.8 · 32 reviews
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card"
+             data-name="Vintage Denim Jacket"
+             onclick="openProduct(
+                'Vintage Denim Jacket',
+                'Rs. 3,499',
+                'Thrift Nepal',
+                'https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=80'
+             )">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="event.stopPropagation()">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=900&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="vendor">
+                    Thrift Nepal
+                </div>
+
+                <div class="product-name">
+                    Vintage Denim Jacket
+                </div>
+
+                <div class="product-price">
+                    Rs. 3,499
+                </div>
+
+                <div class="rating">
+                    ★ 4.9 · 18 reviews
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card"
+             data-name="Minimal Oversized Shirt"
+             onclick="openProduct(
+                'Minimal Oversized Shirt',
+                'Rs. 2,299',
+                'KTM Basics',
+                'https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=80'
+             )">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="event.stopPropagation()">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="vendor">
+                    KTM Basics
+                </div>
+
+                <div class="product-name">
+                    Minimal Oversized Shirt
+                </div>
+
+                <div class="product-price">
+                    Rs. 2,299
+                </div>
+
+                <div class="rating">
+                    ★ 4.7 · 41 reviews
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product-card"
+             data-name="Classic Sneakers"
+             onclick="openProduct(
+                'Classic Sneakers',
+                'Rs. 5,999',
+                'Sneaker Nepal',
+                'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'
+             )">
+
+            <div class="product-image">
+
+                <button class="wishlist"
+                        onclick="event.stopPropagation()">
+                    ♡
+                </button>
+
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80">
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="vendor">
+                    Sneaker Nepal
+                </div>
+
+                <div class="product-name">
+                    Classic Sneakers
+                </div>
+
+                <div class="product-price">
+                    Rs. 5,999
+                </div>
+
+                <div class="rating">
+                    ★ 4.9 · 76 reviews
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VENDORS -->
+
+<section class="vendors-section" id="brands">
+
+    <div class="section-title">
+
+        <h2>Discover Local Brands</h2>
+
+    </div>
+
+    <div class="vendor-grid">
+
+        <div class="vendor-card">
+
+            <img class="vendor-avatar"
+                 src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80">
+
+            <h3>Urban Kathmandu</h3>
+
+            <p>
+                Contemporary streetwear from Kathmandu.
+            </p>
+
+            <p>★ 4.8 · 2.3K followers</p>
+
+            <button class="follow">
+                View Store
+            </button>
+
+        </div>
+
+
+        <div class="vendor-card">
+
+            <img class="vendor-avatar"
+                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80">
+
+            <h3>KTM Basics</h3>
+
+            <p>
+                Minimal everyday essentials.
+            </p>
+
+            <p>★ 4.7 · 1.8K followers</p>
+
+            <button class="follow">
+                View Store
+            </button>
+
+        </div>
+
+
+        <div class="vendor-card">
+
+            <img class="vendor-avatar"
+                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80">
+
+            <h3>Thrift Nepal</h3>
+
+            <p>
+                Curated vintage pieces.
+            </p>
+
+            <p>★ 4.9 · 5.1K followers</p>
+
+            <button class="follow">
+                View Store
+            </button>
+
+        </div>
+
+
+        <div class="vendor-card">
+
+            <img class="vendor-avatar"
+                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80">
+
+            <h3>Sneaker Nepal</h3>
+
+            <p>
+                Sneakers and street culture.
+            </p>
+
+            <p>★ 4.9 · 3.4K followers</p>
+
+            <button class="follow">
+                View Store
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <div class="modal-image">
+            <img id="modalImg">
+        </div>
+
+        <div class="modal-details">
+
+            <button class="close"
+                    onclick="closeProduct()">
+                ×
+            </button>
+
+            <div class="vendor"
+                 id="modalVendor">
+            </div>
+
+            <h2 id="modalName"></h2>
+
+            <div class="modal-price"
+                 id="modalPrice">
+            </div>
+
+            <p style="margin-top:20px;color:#666;line-height:1.6">
+                A premium piece sourced from an independent
+                Nepali fashion seller. All sellers on Fashion Hub
+                are verified before listing.
+            </p>
+
+            <div class="sizes">
+
+                <div class="size">S</div>
+                <div class="size">M</div>
+                <div class="size">L</div>
+                <div class="size">XL</div>
+
+            </div>
+
+            <button class="add-cart"
+                    onclick="addToCart()">
+                ADD TO CART
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CART -->
+
+<div class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button class="close"
+                onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+    <div id="cartItems">
+
+        <p style="color:#777">
+            Your cart is empty.
+        </p>
+
+    </div>
+
+    <div class="cart-total">
+
+        <strong>
+            Total: <span id="cartTotal">Rs. 0</span>
+        </strong>
+
+        <button class="checkout">
+            PROCEED TO CHECKOUT
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        <strong>FASHION HUB NEPAL</strong>
+        <p style="margin-top:10px">
+            Discover independent fashion.
+        </p>
+    </div>
+
+    <p>
+        © 2026 Fashion Hub Nepal
+    </p>
+
+</footer>
+
+
+<script>
+
+let selectedProduct = {};
+let cart = [];
+
+
+/* =========================
+   PRODUCT MODAL
+========================= */
+
+function openProduct(name, price, vendor, image) {
+
+    selectedProduct = {
+        name,
+        price,
+        vendor,
+        image
+    };
+
+    document.getElementById("modalName").innerText = name;
+    document.getElementById("modalPrice").innerText = price;
+    document.getElementById("modalVendor").innerText = vendor;
+    document.getElementById("modalImg").src = image;
+
+    document
+        .getElementById("productModal")
+        .classList.add("active");
+}
+
+
+function closeProduct() {
+
+    document
+        .getElementById("productModal")
+        .classList.remove("active");
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart() {
+
+    cart.push(selectedProduct);
+
+    updateCart();
+
+    closeProduct();
+
+    openCart();
+}
+
+
+function updateCart() {
+
+    document.getElementById("cartCount").innerText =
+        cart.length;
+
+    const container =
+        document.getElementById("cartItems");
+
+    if(cart.length === 0) {
+
+        container.innerHTML =
+            "<p style='color:#777'>Your cart is empty.</p>";
+
+        document.getElementById("cartTotal").innerText =
+            "Rs. 0";
+
+        return;
+    }
+
+    let total = 0;
+
+    container.innerHTML = "";
+
+    cart.forEach(item => {
+
+        let numericPrice =
+            parseInt(
+                item.price
+                .replace("Rs.", "")
+                .replace(",", "")
+            );
+
+        total += numericPrice;
+
+        container.innerHTML += `
+
+            <div class="cart-item">
+
+                <img src="${item.image}">
+
+                <div>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <p style="margin-top:8px">
+                        ${item.vendor}
+                    </p>
+
+                    <p style="margin-top:8px">
+                        ${item.price}
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    document.getElementById("cartTotal").innerText =
+        "Rs. " + total.toLocaleString();
+
+}
+
+
+function openCart() {
+
+    document
+        .getElementById("cart")
+        .classList.add("active");
+
+}
+
+
+function closeCart() {
+
+    document
+        .getElementById("cart")
+        .classList.remove("active");
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts() {
+
+    const query =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+        if(name.includes(query)) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
