@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html>
 
@@ -26,6 +26,23 @@
             margin: 20px;
             padding: 10px;
             border: 1px solid black;
+        }
+
+        .highlighted {
+            border: 3px solid gold;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        .rounded {
+            border-radius: 50%;
+        }
+
+        .shadow {
+            box-shadow: 0 0 10px gray;
         }
     </style>
 </head>
@@ -94,34 +111,41 @@
 
     <button id="animate-card">Animate Card</button>
 
-    <div id="output"></div>
+    <div id="output">Nisarga Khanal</div>
 
 
     <script>
+
+        // Display your name whenever a button is clicked
+
+        $("button").click(function () {
+            $("#output").text("Nisarga Khanal");
+        });
+
 
         // 1. GET & SET
 
         $("#show-name").click(function () {
             let name = $("#student-name").text();
-            $("#output").text(name);
+            $("#output").text("Nisarga Khanal");
         });
 
         $("#change-name").click(function () {
-            $("#student-name").text("Rushil Maharjan");
+            $("#student-name").text("Nisarga Khanal");
         });
 
         $("#show-bio").click(function () {
             let bio = $("#student-bio").html();
-            $("#output").text(bio);
+            $("#output").text("Nisarga Khanal");
         });
 
         $("#get-input").click(function () {
             let nickname = $("#nickname-input").val();
-            $("#output").text(nickname);
+            $("#output").text("Nisarga Khanal");
         });
 
         $("#set-input").click(function () {
-            $("#nickname-input").val("jQuery Pro");
+            $("#nickname-input").val("Nisarga Khanal");
         });
 
 
@@ -219,8 +243,8 @@
             $("#profile-photo").removeClass("shadow");
         });
 
-        $("#nickname-input").keydown(function (event) {
-            $("#output").text(event.key);
+        $("#nickname-input").keydown(function () {
+            $("#output").text("Nisarga Khanal");
         });
 
     </script>
